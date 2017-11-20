@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Coordenadas</title>
+    </head>
+    <link rel="stylesheet" href="./dist/index.css">
+<body>
+
+  <div class="container">
+      <h1 class="title">Coordenadas</h1>
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Archivos</label>
+        </div>
+        <div class="field-body">
+          
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+                <div class="file has-name">
+                    <label class="file-label">
+                      <input id="navegacion" class="file-input" type="file" name="resume">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Selecciona un archivo…
+                        </span>
+                      </span>
+                      <span class="file-name">
+                        Archivo de navegación
+                      </span>
+                    </label>
+                  </div>
+            </p>
+          </div>
+
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+                <div class="file has-name">
+                    <label class="file-label">
+                      <input id="observacion" class="file-input" type="file" name="resume">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Selecciona un archivo…
+                        </span>
+                      </span>
+                      <span class="file-name">
+                        Archivo de observación
+                      </span>
+                    </label>
+                  </div>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+     <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <button id="calcular" class="button is-primary">
+                Calcular
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div id="mensaje" class="notification is-invisible">
+      <button id="cerrarMensaje" class="delete"></button>
+      <span id="mensajeContenido"></span>
+    </div>
+      
+  </div>
+
+<script src="./dist/common.js"></script>
+<script src="./dist/index.js"></script>
+
+</body>
+</html>
