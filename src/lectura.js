@@ -1,11 +1,7 @@
-function parseValue (value) {
+export function parseValue (value) {
     if (value.indexOf("D") != -1) {
-        // console.log(value);
         let data = value.split('D').map(v => parseFloat(v));
-        // console.log(data);
-        data[1] = Math.pow(10, data[1]);
-        // console.log(data);
-        return data[0]*data[1];
+        return data[0]*Math.pow(10, data[1]);
     } else {
         return parseFloat(value);   
     }

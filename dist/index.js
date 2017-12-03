@@ -3,63 +3,14 @@ webpackJsonp([0],[
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lectura__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__calculo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bulma__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bulma___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_bulma__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_css__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_jquery__);
-
-
-        
-
-
-
-
-let navegacion = null;
-let observacion = null;
-
-__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#navegacion').on('change', function (e) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["a" /* leerArchivo */])(e).then(__WEBPACK_IMPORTED_MODULE_0__lectura__["b" /* leerArchivoNavegacion */])
-        .then(resultado => navegacion = resultado)
-        .catch(error => console.warn(error));
-}); 
-__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#observacion').on('change', function (e) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["a" /* leerArchivo */])(e).then(__WEBPACK_IMPORTED_MODULE_0__lectura__["c" /* leerArchivoObservacion */])
-        .then(resultado => observacion = resultado)
-        .catch(error => console.warn(error));
-}); 
-
-__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#calcular').on('click', function (e) {
-    Object(__WEBPACK_IMPORTED_MODULE_1__calculo__["a" /* calcular */])(navegacion, observacion)
-        .then(resultado => console.log(resultado))
-        .catch(error => console.warn(error));
-}); 
-
-
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+/* harmony export (immutable) */ __webpack_exports__["d"] = parseValue;
 /* harmony export (immutable) */ __webpack_exports__["b"] = leerArchivoNavegacion;
 /* harmony export (immutable) */ __webpack_exports__["c"] = leerArchivoObservacion;
 /* harmony export (immutable) */ __webpack_exports__["a"] = leerArchivo;
 function parseValue (value) {
     if (value.indexOf("D") != -1) {
-        // console.log(value);
         let data = value.split('D').map(v => parseFloat(v));
-        // console.log(data);
-        data[1] = Math.pow(10, data[1]);
-        // console.log(data);
-        return data[0]*data[1];
+        return data[0]*Math.pow(10, data[1]);
     } else {
         return parseFloat(value);   
     }
@@ -124,10 +75,72 @@ function leerArchivo (e) {
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lectura__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__calculo__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bulma__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bulma___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_bulma__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_css__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__index_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_jquery__);
+
+
+        
+
+
+
+
+let navegacion = null;
+let observacion = null;
+
+__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#navegacion').on('change', function (e) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["a" /* leerArchivo */])(e).then(__WEBPACK_IMPORTED_MODULE_0__lectura__["b" /* leerArchivoNavegacion */])
+        .then(resultado => navegacion = resultado)
+        .catch(error => console.warn(error));
+}); 
+__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#observacion').on('change', function (e) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["a" /* leerArchivo */])(e).then(__WEBPACK_IMPORTED_MODULE_0__lectura__["c" /* leerArchivoObservacion */])
+        .then(resultado => observacion = resultado)
+        .catch(error => console.warn(error));
+}); 
+
+__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#calcular').on('click', function (e) {
+    Object(__WEBPACK_IMPORTED_MODULE_1__calculo__["a" /* calcular */])(navegacion, observacion)
+        .then(resultado => console.log(resultado))
+        .catch(error => console.warn(error));
+}); 
+
+
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lectura__ = __webpack_require__(0);
+
+
+const GM = Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["d" /* parseValue */])('3.986005D+14');
+/* unused harmony export GM */
+
+const We = Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["d" /* parseValue */])('7.2921151457D-05');
+/* unused harmony export We */
+
+const PI = 3.1415926535898;
+/* unused harmony export PI */
+
+const VLuz = 299792458;
+/* unused harmony export VLuz */
+
+
 const  toc = (dia, hora, min, seg) => 
     (dia*86400)+(hora*3600)+(min*60)+seg;
 /* unused harmony export toc */
@@ -135,9 +148,6 @@ const  toc = (dia, hora, min, seg) =>
 
 const  tsv = toc;
 /* unused harmony export tsv */
-
-const Mk = -0.23937381588093;
-/* unused harmony export Mk */
 
 
 const tk = (tgps, toe) => tgps - toe;
@@ -156,10 +166,11 @@ const deltaTsv = (tgps, a0, a1, a2, toc) =>
 const Ek = (mk, e) => {
     let E = mk;
     let diff = 1;
-    while (diff >= 0.00000001) {
+    let i = 0;
+    while (diff >= 0.00000000000001) {
         let Et = E;
         E = mk + e * Math.sin(E);
-        diff = E - Et;
+        diff = Math.abs(E - Et);
     }
     return E;
 }
@@ -167,12 +178,12 @@ const Ek = (mk, e) => {
 
 
 const cosVk = (Ek, e) => 
-    (Math.cos(Ek)-e)/ 1-e*Math.cos(Ek);
+    (Math.cos(Ek)-e)/ (1-e*Math.cos(Ek));
 /* unused harmony export cosVk */
 
 
 const senVk = (Ek, e) =>
-    (Math.sqrt(1-Math.pow(e,2))*Math.sin(Ek)) / 1-e*Math.cos(Ek);
+    (Math.sqrt(1-Math.pow(e,2))*Math.sin(Ek)) / (1-e*Math.cos(Ek));
 /* unused harmony export senVk */
 
 
@@ -192,6 +203,64 @@ const Vk = (cosVk, senVk) => {
 /* unused harmony export Vk */
 
 
+const thetaK = (vK, w) => vK + w;
+/* unused harmony export thetaK */
+
+
+const n0 = A => Math.sqrt((GM/Math.pow(A, 3)));
+/* unused harmony export n0 */
+
+
+const n = (n0, deltaN) => n0 + deltaN;
+/* unused harmony export n */
+
+
+const Mk = (M0, n, Tk) => M0 + (n * Tk);
+/* unused harmony export Mk */
+
+
+const deltaXk = (Cxc, Cxs, thetaK) => (Cxc*Math.cos(2*thetaK)) + (Cxs*Math.sin(2*thetaK));
+/* unused harmony export deltaXk */
+
+
+const Uk = (thetaK, deltaUk) => thetaK + deltaUk;
+/* unused harmony export Uk */
+
+
+const Rk = (A, e, Ek, deltaRk) => (A*(1-(e*Math.cos(Ek)))) + deltaRk;
+/* unused harmony export Rk */
+
+
+const Ik = (i0, tk, deltaIk) => i0 + tk + deltaIk;
+/* unused harmony export Ik */
+
+
+const Xik = (rk, uk) => rk * Math.cos(uk);
+/* unused harmony export Xik */
+
+
+const Yik = (rk, uk) => rk * Math.sin(uk);
+/* unused harmony export Yik */
+
+
+const omegak = (omega0, omega, tk, toe) => omega0 + ((omega - We) * tk) - (We * toe);
+/* unused harmony export omegak */
+
+
+const Xk = (Xik, omegak, Yik, ik) => 
+    Xik * Math.cos(omegak) - Yik * Math.sin(omegak) * Math.cos(ik);
+/* unused harmony export Xk */
+
+
+const Yk = (Xik, omegak, Yik, ik) => 
+    Xik * Math.sin(omegak) + Yik * Math.cos(omegak) * Math.cos(ik);
+/* unused harmony export Yk */
+
+
+const Zk = (Yik, ik) => Yik * Math.sin(ik);
+/* unused harmony export Zk */
+
+
 const calcular = (navegacion, observacion) => {
     return new Promise((resolve, reject) => {
         if (!navegacion) {
@@ -200,20 +269,94 @@ const calcular = (navegacion, observacion) => {
             reject("Agregue el archivo de observación");
         }
 
+        console.log("============= Calculo ===========");
         const satelite = navegacion[7];
-        console.log(satelite);
-        const _toc = toc.apply(this, observacion.slice(2));
-        console.log(_toc);
-        const _tsv = tsv.apply(this, satelite.tgps.slice(2));
-        console.log(_tsv);
-        console.log(satelite.data[0].concat([_toc]));
+        console.log("satelite 7", satelite);
+        console.log("GM", GM);
+        console.log("We", We);
+        console.log("PI", PI);
+        console.log("Vlight", VLight);
+        const _sqrtA = satelite.data[2][3];
+        console.log('Sqrt A', _sqrtA);
+        const _A = Math.pow(_sqrtA, 2);
+        console.log('A', _A);
+        const _n0 = n0(_A);
+        console.log('n0', _n0);
+        const _deltaN = satelite.data[1][2];
+        console.log('deltaN', _deltaN);
+        const _n = n(_n0, _deltaN);
+        console.log("n", _n);
+        const _M0 = satelite.data[1][3];
+        console.log('M0', _M0);
+        const _toc = toc.apply(this, satelite.tgps.slice(2));
+        console.log("toc", _toc);
+        const _tsv = tsv.apply(this, observacion.slice(2));
+        console.log("tsv", _tsv);
+        console.log("a0, a1, a2, toc",satelite.data[0].concat([_toc]).toString());
         const _deltaTsv = deltaTsv.apply(null, satelite.data[0].concat([_toc]));
-        console.log(_deltaTsv);
+        console.log("deltaTsv", _deltaTsv);
         const _tgps = tgps(_tsv, _deltaTsv);
-        console.log(_tgps);
-        const _tk = tk(_tgps, satelite.data[3][0]);
-        console.log(_tk);
-        resolve(_tk);
+        console.log("tgps", _tgps);
+        const _toe = satelite.data[3][0];
+        console.log("toe", _toe);
+        const _tk = tk(_tgps, _toe);
+        console.log("tk",_tk);
+        const _Mk = Mk(_M0, _n, _tk);
+        console.log("Mk", _Mk);
+        const _e = satelite.data[2][1];
+        console.log("e", _e);
+        const _Ek = Ek(_Mk, _e);
+        console.log("Ek", _Ek);
+        const _cosVk = cosVk(_Ek, _e);
+        console.log('cosVk', _cosVk);
+        const _senVk = senVk(_Ek, _e);
+        console.log('senVk', _senVk);
+        const _Vk = Vk(_cosVk, _senVk);
+        console.log('Vk', _Vk);
+        const _w = satelite.data[4][2];
+        console.log("w", _w);
+        const _thetaK = thetaK(_Vk, _w);
+        console.log("thetaK", _thetaK);
+        const _Crc = satelite.data[1][1];
+        console.log('Crc', _Crc);
+        const _Cuc = satelite.data[2][0];
+        console.log('Cuc', _Cuc);
+        const _Cus = satelite.data[2][2];
+        console.log('Cus', _Cus);
+        const _Cic = satelite.data[3][1];
+        console.log('Cic', _Cic);
+        const _Cis = satelite.data[3][3];
+        console.log('Cis', _Cis);
+        const _Crs = satelite.data[4][1];
+        console.log('Crs', _Crs);
+        const _omega0 = satelite.data[3][2];
+        console.log('omega0', _omega0);
+        const _i0 = satelite.data[4][0];
+        console.log('i0', _i0);
+        const _omega = satelite.data[4][3];
+        console.log('omega', _omega);
+        const _deltaUk = deltaXk(_Cuc, _Cus, _thetaK);
+        console.log('deltaUk', _deltaUk);
+        const _deltaRk = deltaXk(_Crs, _Crc, _thetaK);
+        console.log('deltaRk', _deltaRk);
+        const _deltaIk = deltaXk(_Cic, _Cis, _thetaK);
+        console.log('deltaIk', _deltaIk);
+        const _Uk = Uk(_thetaK, _deltaUk);
+        console.log('Uk', _Uk);
+        const _Rk = Rk(_A, _e, _Ek, _deltaRk);
+        console.log('Rk', _Rk);
+        const _ik = Ik(_i0, _tk, _deltaIk);
+        console.log('Ik', _ik);
+        const _Xik = Xik(_Rk, _Uk);
+        console.log('Xik', _Xik);
+        const _Yik = Yik(_Rk, _Uk);
+        console.log('Yik', _Yik);
+        const _omegak = omegak(_omega0, _omega, _tk, _toe);
+        console.log("omegak", _omegak);
+        const _Xk = Xk(_Xik, _omegak, _Yik, _ik);
+        const _Yk = Yk(_Xik, _omegak, _Yik, _ik);
+        const _Zk = Zk(_Yik, _ik);
+        resolve({x: _Xk, y: _Yk, z: _Zk});
     });
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = calcular;
@@ -10498,4 +10641,4 @@ return jQuery;
 
 
 /***/ })
-],[0]);
+],[1]);
