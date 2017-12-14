@@ -14,6 +14,12 @@ module.exports = {
   watch:true,
   module: {
     rules: [
+      // Convert js file
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: "babel-loader"
+      },
       // Extract css files
       {
         test: /\.css$/,

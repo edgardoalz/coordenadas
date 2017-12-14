@@ -1,268 +1,268 @@
 webpackJsonp([0],[
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["d"] = parseValue;
-/* harmony export (immutable) */ __webpack_exports__["b"] = leerArchivoNavegacion;
-/* harmony export (immutable) */ __webpack_exports__["c"] = leerArchivoObservacion;
-/* harmony export (immutable) */ __webpack_exports__["a"] = leerArchivo;
-function parseValue (value) {
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.parseValue = parseValue;
+exports.leerArchivoNavegacion = leerArchivoNavegacion;
+exports.leerArchivoObservacion = leerArchivoObservacion;
+exports.leerArchivo = leerArchivo;
+function parseValue(value) {
     if (value.indexOf("D") != -1) {
-        let data = value.split('D').map(v => parseFloat(v));
-        return data[0]*Math.pow(10, data[1]);
+        var data = value.split('D').map(function (v) {
+            return parseFloat(v);
+        });
+        return data[0] * Math.pow(10, data[1]);
     } else {
-        return parseFloat(value);   
+        return parseFloat(value);
     }
 }
 
-function leerArchivoNavegacion (data) {
-    return new Promise((resolve, reject) => {
-        const lines = data.split('\r\n').slice(4)
-            .filter(line => line.length).map(line => {
-                return [
-                    line.substr(0,22).trim(), 
-                    parseValue(line.substr(23,19).trim()),
-                    parseValue(line.substr(41,19).trim()), 
-                    parseValue(line.substr(60,19).trim())
-                ]
-            });
-        let lastSatelite = null; 
-        const satelites = lines.reduce((result, line) => {
+function leerArchivoNavegacion(data) {
+    return new Promise(function (resolve, reject) {
+        var lines = data.split('\r\n').slice(4).filter(function (line) {
+            return line.length;
+        }).map(function (line) {
+            return [line.substr(0, 22).trim(), parseValue(line.substr(23, 19).trim()), parseValue(line.substr(41, 19).trim()), parseValue(line.substr(60, 19).trim())];
+        });
+        var lastSatelite = null;
+        var satelites = lines.reduce(function (result, line) {
             if (line[0].length >= 21) {
-                lastSatelite = line[0].substr(0,2).trim();
+                lastSatelite = line[0].substr(0, 2).trim();
                 result[lastSatelite] = {
-                    data : [], 
-                    tgps: line[0].substr(3).split(/\s/)
-                        .filter(n => n.length).map(e => parseValue(e))
+                    data: [],
+                    tgps: line[0].substr(3).split(/\s/).filter(function (n) {
+                        return n.length;
+                    }).map(function (e) {
+                        return parseValue(e);
+                    })
                 };
                 line[0] = parseValue(line[0].substr(3).replace(/\s/g, ''));
                 console.log(line[0]);
             } else {
-                line[0] = parseValue(line[0])
+                line[0] = parseValue(line[0]);
             }
             result[lastSatelite].data.push(line);
             return result;
-        },{});
+        }, {});
 
         resolve(satelites);
     });
 }
 
-function leerArchivoObservacion (data) {
-    return new Promise((resolve, reject) => {
-        const lines = data.split('\r\n').slice(17,18).filter(line => line.length)
-            .map(line => line.substr(0, 25).split(/\s/)
-                .filter(n => n.length).map(e => parseValue(e)))
+function leerArchivoObservacion(data) {
+    return new Promise(function (resolve, reject) {
+        var lines = data.split('\r\n').slice(17, 18).filter(function (line) {
+            return line.length;
+        }).map(function (line) {
+            return line.substr(0, 25).split(/\s/).filter(function (n) {
+                return n.length;
+            }).map(function (e) {
+                return parseValue(e);
+            });
+        });
 
         resolve(lines[0]);
     });
 }
 
-function leerArchivo (e) {
-    return new Promise((resolve, reject) => {
-        const archivo = e.target.files[0];
+function leerArchivo(e) {
+    return new Promise(function (resolve, reject) {
+        var archivo = e.target.files[0];
         if (!archivo) {
-          return;
+            return;
         }
-        const lector = new FileReader();
-        lector.onload = function(e) {
-          resolve(e.target.result);
+        var lector = new FileReader();
+        lector.onload = function (e) {
+            resolve(e.target.result);
         };
         lector.readAsText(archivo);
     });
 }
 
-
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lectura__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__calculo__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_font_awesome_less_font_awesome_less__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bulma__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bulma___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_bulma__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_css__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_jquery__);
 
 
-        
+var _lectura = __webpack_require__(0);
 
+var _calculo = __webpack_require__(2);
 
+__webpack_require__(3);
 
+__webpack_require__(4);
 
-let navegacion = null;
-let observacion = null;
+__webpack_require__(5);
 
-__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#navegacion').on('change', function (e) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["a" /* leerArchivo */])(e).then(__WEBPACK_IMPORTED_MODULE_0__lectura__["b" /* leerArchivoNavegacion */])
-        .then(resultado => navegacion = resultado)
-        .catch(error => console.warn(error));
-}); 
-__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#observacion').on('change', function (e) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["a" /* leerArchivo */])(e).then(__WEBPACK_IMPORTED_MODULE_0__lectura__["c" /* leerArchivoObservacion */])
-        .then(resultado => observacion = resultado)
-        .catch(error => console.warn(error));
-}); 
+var _jquery = __webpack_require__(6);
 
-__WEBPACK_IMPORTED_MODULE_5_jquery___default()('#calcular').on('click', function (e) {
-    Object(__WEBPACK_IMPORTED_MODULE_1__calculo__["a" /* calcular */])(navegacion, observacion)
-        .then(resultado => console.log(resultado))
-        .catch(error => console.warn(error));
-}); 
+var _jquery2 = _interopRequireDefault(_jquery);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var navegacion = null;
+var observacion = null;
 
+(0, _jquery2.default)('#navegacion').on('change', function (e) {
+    (0, _lectura.leerArchivo)(e).then(_lectura.leerArchivoNavegacion).then(function (resultado) {
+        return navegacion = resultado;
+    }).catch(function (error) {
+        return console.warn(error);
+    });
+});
+(0, _jquery2.default)('#observacion').on('change', function (e) {
+    (0, _lectura.leerArchivo)(e).then(_lectura.leerArchivoObservacion).then(function (resultado) {
+        return observacion = resultado;
+    }).catch(function (error) {
+        return console.warn(error);
+    });
+});
+
+(0, _jquery2.default)('#calcular').on('click', function (e) {
+    (0, _calculo.calcular)(navegacion, observacion).then(function (resultado) {
+        return console.log(resultado);
+    }).catch(function (error) {
+        return console.warn(error);
+    });
+});
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lectura__ = __webpack_require__(0);
 
 
-const GM = Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["d" /* parseValue */])('3.986005D+14');
-/* unused harmony export GM */
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.calcular = exports.Zk = exports.Yk = exports.Xk = exports.omegak = exports.Yik = exports.Xik = exports.Ik = exports.Rk = exports.Uk = exports.deltaXk = exports.Mk = exports.n = exports.n0 = exports.thetaK = exports.Vk = exports.fik = exports.senVk = exports.cosVk = exports.Ek = exports.deltaTsv = exports.tgps = exports.tk = exports.tsv = exports.toc = exports.VLuz = exports.PI = exports.We = exports.GM = undefined;
 
-const We = Object(__WEBPACK_IMPORTED_MODULE_0__lectura__["d" /* parseValue */])('7.2921151457D-05');
-/* unused harmony export We */
+var _lectura = __webpack_require__(0);
 
-const PI = 3.1415926535898;
-/* unused harmony export PI */
+var GM = exports.GM = (0, _lectura.parseValue)('3.986005D+14');
+var We = exports.We = (0, _lectura.parseValue)('7.2921151457D-05');
+var PI = exports.PI = 3.1415926535898;
+var VLuz = exports.VLuz = 299792458;
 
-const VLuz = 299792458;
-/* unused harmony export VLuz */
+var toc = exports.toc = function toc(dia, hora, min, seg) {
+    return dia * 86400 + hora * 3600 + min * 60 + seg;
+};
 
+var tsv = exports.tsv = toc;
 
-const  toc = (dia, hora, min, seg) => 
-    (dia*86400)+(hora*3600)+(min*60)+seg;
-/* unused harmony export toc */
+var tk = exports.tk = function tk(tgps, toe) {
+    return tgps - toe;
+};
 
+var tgps = exports.tgps = function tgps(tsv, deltaTsv) {
+    return tsv - deltaTsv;
+};
 
-const  tsv = toc;
-/* unused harmony export tsv */
+var deltaTsv = exports.deltaTsv = function deltaTsv(tgps, a0, a1, a2, toc) {
+    return a0 + a1 * (tgps - toc) + a2 * (parseFloat(tgps) - toc);
+};
 
-
-const tk = (tgps, toe) => tgps - toe;
-/* unused harmony export tk */
-
-
-const tgps = (tsv, deltaTsv) => tsv - deltaTsv;
-/* unused harmony export tgps */
-
-
-const deltaTsv = (tgps, a0, a1, a2, toc) =>
-    a0+a1 * (tgps - toc) + a2 * (parseFloat(tgps) - toc);
-/* unused harmony export deltaTsv */
-
-
-const Ek = (mk, e) => {
-    let E = mk;
-    let diff = 1;
-    let i = 0;
+var Ek = exports.Ek = function Ek(mk, e) {
+    var E = mk;
+    var diff = 1;
+    var i = 0;
     while (diff >= 0.00000000000001) {
-        let Et = E;
+        var Et = E;
         E = mk + e * Math.sin(E);
         diff = Math.abs(E - Et);
     }
     return E;
-}
-/* unused harmony export Ek */
+};
 
+var cosVk = exports.cosVk = function cosVk(Ek, e) {
+    return (Math.cos(Ek) - e) / (1 - e * Math.cos(Ek));
+};
 
-const cosVk = (Ek, e) => 
-    (Math.cos(Ek)-e)/ (1-e*Math.cos(Ek));
-/* unused harmony export cosVk */
+var senVk = exports.senVk = function senVk(Ek, e) {
+    return Math.sqrt(1 - Math.pow(e, 2)) * Math.sin(Ek) / (1 - e * Math.cos(Ek));
+};
 
+var fik = exports.fik = function fik(Vk, omega) {
+    return Vk + omega;
+};
 
-const senVk = (Ek, e) =>
-    (Math.sqrt(1-Math.pow(e,2))*Math.sin(Ek)) / (1-e*Math.cos(Ek));
-/* unused harmony export senVk */
-
-
-const fik = (Vk, omega) => Vk + omega;
-/* unused harmony export fik */
-
-
-const Vk = (cosVk, senVk) => {
+var Vk = exports.Vk = function Vk(cosVk, senVk) {
     if (cosVk < 0) {
-        return Math.atan(senVk/cosVk) + Math.PI;
+        return Math.atan(senVk / cosVk) + Math.PI;
     } else if (senVk < 0) {
-        return Math.atan(senVk/cosVk) + 2*Math.PI;
+        return Math.atan(senVk / cosVk) + 2 * Math.PI;
     } else {
-        return Math.atan(senVk/cosVk);
+        return Math.atan(senVk / cosVk);
     }
-}
-/* unused harmony export Vk */
+};
 
+var thetaK = exports.thetaK = function thetaK(vK, w) {
+    return vK + w;
+};
 
-const thetaK = (vK, w) => vK + w;
-/* unused harmony export thetaK */
+var n0 = exports.n0 = function n0(A) {
+    return Math.sqrt(GM / Math.pow(A, 3));
+};
 
+var n = exports.n = function n(n0, deltaN) {
+    return n0 + deltaN;
+};
 
-const n0 = A => Math.sqrt((GM/Math.pow(A, 3)));
-/* unused harmony export n0 */
+var Mk = exports.Mk = function Mk(M0, n, Tk) {
+    return M0 + n * Tk;
+};
 
+var deltaXk = exports.deltaXk = function deltaXk(Cxc, Cxs, thetaK) {
+    return Cxc * Math.cos(2 * thetaK) + Cxs * Math.sin(2 * thetaK);
+};
 
-const n = (n0, deltaN) => n0 + deltaN;
-/* unused harmony export n */
+var Uk = exports.Uk = function Uk(thetaK, deltaUk) {
+    return thetaK + deltaUk;
+};
 
+var Rk = exports.Rk = function Rk(A, e, Ek, deltaRk) {
+    return A * (1 - e * Math.cos(Ek)) + deltaRk;
+};
 
-const Mk = (M0, n, Tk) => M0 + (n * Tk);
-/* unused harmony export Mk */
+var Ik = exports.Ik = function Ik(i0, i, tk, deltaIk) {
+    return i0 + i * tk + deltaIk;
+};
 
+var Xik = exports.Xik = function Xik(rk, uk) {
+    return rk * Math.cos(uk);
+};
 
-const deltaXk = (Cxc, Cxs, thetaK) => (Cxc*Math.cos(2*thetaK)) + (Cxs*Math.sin(2*thetaK));
-/* unused harmony export deltaXk */
+var Yik = exports.Yik = function Yik(rk, uk) {
+    return rk * Math.sin(uk);
+};
 
+var omegak = exports.omegak = function omegak(omega0, omega, tk, toe) {
+    return omega0 + (omega - We) * tk - We * toe;
+};
 
-const Uk = (thetaK, deltaUk) => thetaK + deltaUk;
-/* unused harmony export Uk */
+var Xk = exports.Xk = function Xk(Xik, omegak, Yik, ik) {
+    return Xik * Math.cos(omegak) - Yik * Math.sin(omegak) * Math.cos(ik);
+};
 
+var Yk = exports.Yk = function Yk(Xik, omegak, Yik, ik) {
+    return Xik * Math.sin(omegak) + Yik * Math.cos(omegak) * Math.cos(ik);
+};
 
-const Rk = (A, e, Ek, deltaRk) => (A*(1-(e*Math.cos(Ek)))) + deltaRk;
-/* unused harmony export Rk */
+var Zk = exports.Zk = function Zk(Yik, ik) {
+    return Yik * Math.sin(ik);
+};
 
-
-const Ik = (i0, i, tk, deltaIk) => i0 + i*tk + deltaIk;
-/* unused harmony export Ik */
-
-
-const Xik = (rk, uk) => rk * Math.cos(uk);
-/* unused harmony export Xik */
-
-
-const Yik = (rk, uk) => rk * Math.sin(uk);
-/* unused harmony export Yik */
-
-
-const omegak = (omega0, omega, tk, toe) => omega0 + ((omega - We) * tk) - (We * toe);
-/* unused harmony export omegak */
-
-
-const Xk = (Xik, omegak, Yik, ik) => 
-    Xik * Math.cos(omegak) - Yik * Math.sin(omegak) * Math.cos(ik);
-/* unused harmony export Xk */
-
-
-const Yk = (Xik, omegak, Yik, ik) => 
-    Xik * Math.sin(omegak) + Yik * Math.cos(omegak) * Math.cos(ik);
-/* unused harmony export Yk */
-
-
-const Zk = (Yik, ik) => Yik * Math.sin(ik);
-/* unused harmony export Zk */
-
-
-const calcular = (navegacion, observacion) => {
-    return new Promise((resolve, reject) => {
+var calcular = exports.calcular = function calcular(navegacion, observacion) {
+    return new Promise(function (resolve, reject) {
         if (!navegacion) {
             return reject("Agregue el archivo de navegación");
         } else if (!observacion) {
@@ -270,99 +270,97 @@ const calcular = (navegacion, observacion) => {
         }
 
         console.log("============= Calculo ===========");
-        const satelite = navegacion[7];
+        var satelite = navegacion[7];
         console.log("satelite 7", satelite);
         console.log("GM", GM);
         console.log("We", We);
         console.log("PI", PI);
         console.log("VLuz", VLuz);
-        const _sqrtA = satelite.data[2][3];
+        var _sqrtA = satelite.data[2][3];
         console.log('Sqrt A', _sqrtA);
-        const _A = Math.pow(_sqrtA, 2);
+        var _A = Math.pow(_sqrtA, 2);
         console.log('A', _A);
-        const _n0 = n0(_A);
+        var _n0 = n0(_A);
         console.log('n0', _n0);
-        const _deltaN = satelite.data[1][2];
+        var _deltaN = satelite.data[1][2];
         console.log('deltaN', _deltaN);
-        const _n = n(_n0, _deltaN);
+        var _n = n(_n0, _deltaN);
         console.log("n", _n);
-        const _M0 = satelite.data[1][3];
+        var _M0 = satelite.data[1][3];
         console.log('M0', _M0);
-        const _toc = toc.apply(this, satelite.tgps.slice(2));
+        var _toc = toc.apply(undefined, satelite.tgps.slice(2));
         console.log("toc", _toc);
-        const _tsv = tsv.apply(this, observacion.slice(2));
+        var _tsv = tsv.apply(undefined, observacion.slice(2));
         console.log("tsv", _tsv);
-        console.log("a0, a1, a2, toc",satelite.data[0].concat([_toc]).toString());
-        const _deltaTsv = deltaTsv.apply(null, satelite.data[0].concat([_toc]));
+        console.log("a0, a1, a2, toc", satelite.data[0].concat([_toc]).toString());
+        var _deltaTsv = deltaTsv.apply(null, satelite.data[0].concat([_toc]));
         console.log("deltaTsv", _deltaTsv);
-        const _tgps = tgps(_tsv, _deltaTsv);
+        var _tgps = tgps(_tsv, _deltaTsv);
         console.log("tgps", _tgps);
-        const _toe = satelite.data[3][0];
+        var _toe = satelite.data[3][0];
         console.log("toe", _toe);
-        const _tk = tk(_tgps, _toe);
-        console.log("tk",_tk);
-        const _Mk = Mk(_M0, _n, _tk);
+        var _tk = tk(_tgps, _toe);
+        console.log("tk", _tk);
+        var _Mk = Mk(_M0, _n, _tk);
         console.log("Mk", _Mk);
-        const _e = satelite.data[2][1];
+        var _e = satelite.data[2][1];
         console.log("e", _e);
-        const _Ek = Ek(_Mk, _e);
+        var _Ek = Ek(_Mk, _e);
         console.log("Ek", _Ek);
-        const _cosVk = cosVk(_Ek, _e);
+        var _cosVk = cosVk(_Ek, _e);
         console.log('cosVk', _cosVk);
-        const _senVk = senVk(_Ek, _e);
+        var _senVk = senVk(_Ek, _e);
         console.log('senVk', _senVk);
-        const _Vk = Vk(_cosVk, _senVk);
+        var _Vk = Vk(_cosVk, _senVk);
         console.log('Vk', _Vk);
-        const _w = satelite.data[4][2];
+        var _w = satelite.data[4][2];
         console.log("w", _w);
-        const _thetaK = thetaK(_Vk, _w);
+        var _thetaK = thetaK(_Vk, _w);
         console.log("thetaK", _thetaK);
-        const _Crc = satelite.data[1][1];
+        var _Crc = satelite.data[1][1];
         console.log('Crc', _Crc);
-        const _Cuc = satelite.data[2][0];
+        var _Cuc = satelite.data[2][0];
         console.log('Cuc', _Cuc);
-        const _Cus = satelite.data[2][2];
+        var _Cus = satelite.data[2][2];
         console.log('Cus', _Cus);
-        const _Cic = satelite.data[3][1];
+        var _Cic = satelite.data[3][1];
         console.log('Cic', _Cic);
-        const _Cis = satelite.data[3][3];
+        var _Cis = satelite.data[3][3];
         console.log('Cis', _Cis);
-        const _Crs = satelite.data[4][1];
+        var _Crs = satelite.data[4][1];
         console.log('Crs', _Crs);
-        const _omega0 = satelite.data[3][2];
+        var _omega0 = satelite.data[3][2];
         console.log('omega0', _omega0);
-        const _i0 = satelite.data[4][0];
+        var _i0 = satelite.data[4][0];
         console.log('i0', _i0);
-        const _omega = satelite.data[4][3];
+        var _omega = satelite.data[4][3];
         console.log('omega', _omega);
-        const _deltaUk = deltaXk(_Cuc, _Cus, _thetaK);
+        var _deltaUk = deltaXk(_Cuc, _Cus, _thetaK);
         console.log('deltaUk', _deltaUk);
-        const _deltaRk = deltaXk(_Crs, _Crc, _thetaK);
+        var _deltaRk = deltaXk(_Crs, _Crc, _thetaK);
         console.log('deltaRk', _deltaRk);
-        const _deltaIk = deltaXk(_Cic, _Cis, _thetaK);
+        var _deltaIk = deltaXk(_Cic, _Cis, _thetaK);
         console.log('deltaIk', _deltaIk);
-        const _Uk = Uk(_thetaK, _deltaUk);
+        var _Uk = Uk(_thetaK, _deltaUk);
         console.log('Uk', _Uk);
-        const _Rk = Rk(_A, _e, _Ek, _deltaRk);
+        var _Rk = Rk(_A, _e, _Ek, _deltaRk);
         console.log('Rk', _Rk);
-        const _i = satelite.data[5][0];
+        var _i = satelite.data[5][0];
         console.log('i', _i);
-        const _ik = Ik(_i0, _i, _tk, _deltaIk);
+        var _ik = Ik(_i0, _i, _tk, _deltaIk);
         console.log('Ik', _ik);
-        const _Xik = Xik(_Rk, _Uk);
+        var _Xik = Xik(_Rk, _Uk);
         console.log('Xik', _Xik);
-        const _Yik = Yik(_Rk, _Uk);
+        var _Yik = Yik(_Rk, _Uk);
         console.log('Yik', _Yik);
-        const _omegak = omegak(_omega0, _omega, _tk, _toe);
+        var _omegak = omegak(_omega0, _omega, _tk, _toe);
         console.log("omegak", _omegak);
-        const _Xk = Xk(_Xik, _omegak, _Yik, _ik);
-        const _Yk = Yk(_Xik, _omegak, _Yik, _ik);
-        const _Zk = Zk(_Yik, _ik);
-        resolve({x: _Xk, y: _Yk, z: _Zk});
+        var _Xk = Xk(_Xik, _omegak, _Yik, _ik);
+        var _Yk = Yk(_Xik, _omegak, _Yik, _ik);
+        var _Zk = Zk(_Yik, _ik);
+        resolve({ x: _Xk, y: _Yk, z: _Zk });
     });
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = calcular;
-
+};
 
 /***/ }),
 /* 3 */
@@ -10599,9 +10597,9 @@ jQuery.nodeName = nodeName;
 // https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
 
 if ( true ) {
-	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
 		return jQuery;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+	}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 }
 
