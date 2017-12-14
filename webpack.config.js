@@ -1,5 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -58,6 +60,13 @@ module.exports = {
   // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
   plugins: [
     new webpack.optimize.CommonsChunkPlugin("common"),
-    new ExtractTextPlugin({filename: "[name].css", disable: false, allChunks: true})
+    new ExtractTextPlugin({filename: "[name].css", disable: false, allChunks: true}),
+    new UglifyJsPlugin(),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    })
   ]
 };
