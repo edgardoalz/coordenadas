@@ -61,7 +61,7 @@ export const Uk = (thetaK, deltaUk) => thetaK + deltaUk;
 
 export const Rk = (A, e, Ek, deltaRk) => (A*(1-(e*Math.cos(Ek)))) + deltaRk;
 
-export const Ik = (i0, tk, deltaIk) => i0 + tk + deltaIk;
+export const Ik = (i0, i, tk, deltaIk) => i0 + i*tk + deltaIk;
 
 export const Xik = (rk, uk) => rk * Math.cos(uk);
 
@@ -80,9 +80,9 @@ export const Zk = (Yik, ik) => Yik * Math.sin(ik);
 export const calcular = (navegacion, observacion) => {
     return new Promise((resolve, reject) => {
         if (!navegacion) {
-            reject("Agregue el archivo de navegación");
+            return reject("Agregue el archivo de navegación");
         } else if (!observacion) {
-            reject("Agregue el archivo de observación");
+            return reject("Agregue el archivo de observación");
         }
 
         console.log("============= Calculo ===========");
@@ -91,7 +91,7 @@ export const calcular = (navegacion, observacion) => {
         console.log("GM", GM);
         console.log("We", We);
         console.log("PI", PI);
-        console.log("Vlight", VLight);
+        console.log("VLuz", VLuz);
         const _sqrtA = satelite.data[2][3];
         console.log('Sqrt A', _sqrtA);
         const _A = Math.pow(_sqrtA, 2);
@@ -161,7 +161,9 @@ export const calcular = (navegacion, observacion) => {
         console.log('Uk', _Uk);
         const _Rk = Rk(_A, _e, _Ek, _deltaRk);
         console.log('Rk', _Rk);
-        const _ik = Ik(_i0, _tk, _deltaIk);
+        const _i = satelite.data[5][0];
+        console.log('i', _i);
+        const _ik = Ik(_i0, _i, _tk, _deltaIk);
         console.log('Ik', _ik);
         const _Xik = Xik(_Rk, _Uk);
         console.log('Xik', _Xik);
