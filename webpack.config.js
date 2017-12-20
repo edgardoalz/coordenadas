@@ -16,7 +16,7 @@ module.exports = {
   watch:true,
   module: {
     rules: [
-      // Convert js file
+      // Convert js files
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -60,13 +60,17 @@ module.exports = {
   // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
   plugins: [
     new webpack.optimize.CommonsChunkPlugin("common"),
-    new ExtractTextPlugin({filename: "[name].css", disable: false, allChunks: true}),
-    new UglifyJsPlugin(),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: { discardComments: { removeAll: true } },
-      canPrint: true
-    })
+    new ExtractTextPlugin({
+      filename: "[name].css", 
+      disable: false, 
+      allChunks: true
+    }),
+    // new UglifyJsPlugin(),
+    // new OptimizeCssAssetsPlugin({
+    //   assetNameRegExp: /\.css$/g,
+    //   cssProcessor: require('cssnano'),
+    //   cssProcessorOptions: { discardComments: { removeAll: true } },
+    //   canPrint: true
+    // })
   ]
 };
