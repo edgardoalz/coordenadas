@@ -77,6 +77,8 @@ export const Yk = (Xik, omegak, Yik, ik) =>
 
 export const Zk = (Yik, ik) => Yik * Math.sin(ik);
 
+export const formato = n = n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
 export const calcular = (navegacion, observacion) => {
     return new Promise((resolve, reject) => {
         if (!navegacion) {
@@ -99,9 +101,9 @@ export const calculo = (numero, satelite, observacion) => {
         const _deltaN = satelite.data[1][2];
         const _n = n(_n0, _deltaN);
         const _M0 = satelite.data[1][3];
-        const _toc = toc.apply(this, satelite.tgps.slice(2));
-        const _tsv = tsv.apply(this, observacion.slice(2));
-        const _deltaTsv = deltaTsv.apply(null, satelite.data[0].concat([_toc]));
+        const _toc = toc(... satelite.tgps.slice(2));
+        const _tsv = tsv(... observacion.slice(2));
+        const _deltaTsv = deltaTsv(... satelite.data[0].concat([_toc]));
         const _tgps = tgps(_tsv, _deltaTsv);
         const _toe = satelite.data[3][0];
         const _tk = tk(_tgps, _toe);
@@ -135,11 +137,6 @@ export const calculo = (numero, satelite, observacion) => {
         const _Xk = Xk(_Xik, _omegak, _Yik, _ik);
         const _Yk = Yk(_Xik, _omegak, _Yik, _ik);
         const _Zk = Zk(_Yik, _ik);
-        resolve({
-            satelite: numero, 
-            x: _Xk.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'), 
-            y: _Yk.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'), 
-            z: _Zk.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
-        });
+        resolve({satelite: numero, x: formato(_Xk), y: formato(_Yk), z: formato(_Zk)});
     });
 }
