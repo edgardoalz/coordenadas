@@ -65,12 +65,12 @@ module.exports = {
       disable: false, 
       allChunks: true
     }),
-    // new UglifyJsPlugin(),
-    // new OptimizeCssAssetsPlugin({
-    //   assetNameRegExp: /\.css$/g,
-    //   cssProcessor: require('cssnano'),
-    //   cssProcessorOptions: { discardComments: { removeAll: true } },
-    //   canPrint: true
-    // })
+    new UglifyJsPlugin(),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    })
   ]
 };

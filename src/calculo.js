@@ -77,7 +77,7 @@ export const Yk = (Xik, omegak, Yik, ik) =>
 
 export const Zk = (Yik, ik) => Yik * Math.sin(ik);
 
-export const formato = n = n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+export const formato = n => n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 export const calcular = (navegacion, observacion) => {
     return new Promise((resolve, reject) => {
